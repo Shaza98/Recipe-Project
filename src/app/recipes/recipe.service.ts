@@ -1,11 +1,11 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 import {Recipe} from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService{
-  recipeSelected = new EventEmitter<Recipe>();
+
   private recipes: Recipe[] = [new Recipe('Tasty Schnitzel',
    'A super tasty Schnitzel!','https://thestayathomechef.com/wp-content/uploads/2018/03/German-Schnitzel-3-small.jpg',
    [
@@ -22,6 +22,10 @@ export class RecipeService{
   
   getRecipes(){
     return this.recipes.slice();
+  }
+
+  getRecipe(index: number){
+    return this.recipes[index];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
